@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  shopfront:
+    build: ./shopfront
+    image: shopfront:1.0
+    container_name: shopfront
+    networks:
+      - retail_net
+    ports:
+     - "8010:8010"
+    links:
+      - productcatalogue
+      - stockmanager
+
+  productcatalogue:
+    build: ./productcatalogue
+    image: productcatalogue:1.0
+    container_name: productcatalogue
+    networks:
+      - retail_net
+    ports:
+     - "8020:8020"
+
+  stockmanager:
+    build: ./stockmanager
+    image: stockmanager:1.0
+    container_name: stockmanager
+    networks:
+      - retail_net
+    ports:
+     - "8030:8030"
+
+networks:
+  retail_net:
+    name: retail_net
+    driver: bridge
