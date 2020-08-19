@@ -1,4 +1,5 @@
 # Java Shopping Application
+# Clone from github.com/danielbryantuk/oreilly-docker-java-shopping
 
 The application follows the microservices-style architect and consists of three applications, or services.
 
