@@ -25,6 +25,7 @@ pipeline {
             }
         }
 
+/*
         stage('maven: shopfront compile & test & package') {
             steps {
                 echo "// maven: shopfront compile & test & package"
@@ -45,6 +46,7 @@ pipeline {
                 sh 'cd stockmanager; mvn clean test package package'
             }
         }
+*/
 
         stage('docker: shopfront build image') {
             steps {
