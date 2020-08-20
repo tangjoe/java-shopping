@@ -51,21 +51,21 @@ pipeline {
         stage('docker: shopfront build image') {
             steps {
                 echo "// docker: shopfront build image"
-                sh 'docker build -t localhost:8082/shopfront:1.0 -f shopfront/Dockerfile-build-n-run-stage'
+                sh 'docker build -t localhost:8082/shopfront:1.0 -f shopfront/Dockerfile-build-n-run-stage .'
             }
         }
 
         stage('docker: productcatalogue build image') {
             steps {
                 echo "// docker: productcatalogue build image"
-                sh 'docker build -t localhost:8082/productcatalogue:1.0 -f productcatalogue/Dockerfile-build-n-run-stage'
+                sh 'docker build -t localhost:8082/productcatalogue:1.0 -f productcatalogue/Dockerfile-build-n-run-stage .'
             }
         }
 
         stage('docker: stockmanager build image') {
             steps {
                 echo "// docker: stockmanager build image"
-                sh 'docker build -t localhost:8082/stockmanager:1.0 -f stockmanager/Dockerfile-build-n-run-stage'
+                sh 'docker build -t localhost:8082/stockmanager:1.0 -f stockmanager/Dockerfile-build-n-run-stage .'
             }
         }
 
