@@ -94,7 +94,9 @@ pipeline {
                             // main test here
                             sh 'curl http://shopfront:8010/ | grep "Docker Java"'
                         } finally {
-                            sh 'docker-compose down'
+                            // Can't use docker-compose down as it will delete 'cicd_net' which is shared with Jenkins
+                            // sh 'docker-compose down'
+                            sh 'docker rm -f shopfront productcatalogue stockmanager'
                         }
                     }
                 }
