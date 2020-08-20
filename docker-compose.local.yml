@@ -1,10 +1,11 @@
 version: '3.5'
 services:
   shopfront:
-    image: localhost:8082/shopfront:1.0
+    build: ./shopfront
+    image: shopfront:1.0
     container_name: shopfront
     networks:
-      - cicd_net
+      - retail_net
     ports:
      - "8010:8010"
     links:
@@ -12,22 +13,24 @@ services:
       - stockmanager
 
   productcatalogue:
-    image: localhost:8082/productcatalogue:1.0
+    build: ./productcatalogue
+    image: productcatalogue:1.0
     container_name: productcatalogue
     networks:
-      - cicd_net
+      - retail_net
     ports:
      - "8020:8020"
 
   stockmanager:
-    image: localhost:8082/stockmanager:1.0
+    build: ./stockmanager
+    image: stockmanager:1.0
     container_name: stockmanager
     networks:
-      - cicd_net
+      - retail_net
     ports:
      - "8030:8030"
 
 networks:
-  cicd_net:
-    name: cicd_net
+  retail_net:
+    name: retail_net
     driver: bridge
