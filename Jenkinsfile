@@ -93,6 +93,8 @@ pipeline {
                             }
                             // main test here
                             sh 'curl http://shopfront:8010/ | grep "Docker Java"'
+                            sh 'curl http://productcatalogue:8020/products | jq'
+                            sh 'curl http://stockmanager:8030/stocks | jq'
                         } finally {
                             // Can't use docker-compose down as it will delete 'cicd_net' which is shared with Jenkins
                             // sh 'docker-compose down'
