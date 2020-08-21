@@ -92,10 +92,21 @@ pipeline {
                                 return (r == 0);
                             }
                             // main test here
-                            def out = sh script:
-                            'curl http://shopfront:8010/ | grep "Docker Java"', returnStatus: true
-                            // sh 'curl -s http://productcatalogue:8020/products'
-                            // sh 'curl -s http://stockmanager:8030/stocks'
+                            waitUntil {
+                                def out = sh script:
+                                'curl -s http://shopfront:8010/ | grep "Docker Java"', returnStatus: true
+                                return (r == 0);
+                            }
+                            waitUntil {
+                                def out = sh script:
+                                'curl -s http://productcatalogue:8020/products | jq', returnStatus: true
+                                return (r == 0);
+                            }
+                            waitUntil {
+                                def out = sh script:
+                                'curl -s http://stockmanager:8030/stocks | jq', returnStatus: true
+                                return (r == 0);
+                            }
                         } finally {
                             // Can't use docker-compose down as it will delete 'cicd_net' which is shared with Jenkins
                             // sh 'docker-compose down'
