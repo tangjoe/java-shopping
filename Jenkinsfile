@@ -98,7 +98,7 @@ pipeline {
                         } finally {
                             // Can't use docker-compose down as it will delete 'cicd_net' which is shared with Jenkins
                             // sh 'docker-compose down'
-                            sh 'docker rm -f shopfront productcatalogue stockmanager'
+                            // sh 'docker rm -f shopfront productcatalogue stockmanager'
                         }
                     }
                 }
