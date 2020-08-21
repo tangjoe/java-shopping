@@ -99,12 +99,12 @@ pipeline {
                             }
                             waitUntil {
                                 def r = sh script:
-                                'curl -s http://productcatalogue:8020/products | jq .[]', returnStatus: true
+                                'curl -s http://productcatalogue:8020/products', returnStatus: true
                                 return (r == 0);
                             }
                             waitUntil {
                                 def r = sh script:
-                                'curl -s http://stockmanager:8030/stocks | jq .[]', returnStatus: true
+                                'curl -s http://stockmanager:8030/stocks', returnStatus: true
                                 return (r == 0);
                             }
                         } finally {
