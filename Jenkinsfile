@@ -93,17 +93,17 @@ pipeline {
                             }
                             // main test here
                             waitUntil {
-                                def out = sh script:
+                                def r = sh script:
                                 'curl -s http://shopfront:8010/ | grep "Docker Java"', returnStatus: true
                                 return (r == 0);
                             }
                             waitUntil {
-                                def out = sh script:
+                                def r = sh script:
                                 'curl -s http://productcatalogue:8020/products | jq', returnStatus: true
                                 return (r == 0);
                             }
                             waitUntil {
-                                def out = sh script:
+                                def r = sh script:
                                 'curl -s http://stockmanager:8030/stocks | jq', returnStatus: true
                                 return (r == 0);
                             }
